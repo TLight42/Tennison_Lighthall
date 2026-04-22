@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Places I've Lived</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Navigation bar */
+        .nav {
+            background-color: #333;
+            padding: 15px;
+        }
+
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1 {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 48px;
+            margin-top: 20px;
+        }
+
+        .place {
+            margin: 40px auto;
+            padding: 20px;
+            width: 60%;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding: 0;
+        }
+
+        .top-button {
+            display: inline-block;
+            margin: 40px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .top-button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top anchor -->
+    <div id="top"></div>
+
+    <!-- MAIN NAV (pages) -->
+    <div class="nav">
+        <a href="Index.html">Home</a>
+        <a href="Resume.html">Resume</a>
+        <a href="AI.html">Game</a>
+    </div>
+
+    <!-- ANCHOR NAV (on-page sections) -->
+    <div class="nav" style="background-color: #555;">
+        <a href="#virginia">Virginia</a>
+        <a href="#arizona">Arizona</a>
+        <a href="#utah">Utah</a>
+        <a href="#australia">Australia</a>
+        <a href="#provo">Provo</a>
+    </div>
+
+    <h1>Where I've Lived</h1>
+
+    <!-- VIRGINIA -->
+    <div class="place" id="virginia">
+        <h2>1. Virginia</h2>
+        <img src="VCU.jpeg.webp">
+        <ul>
+            <li>Chesterfield Virginia was where I was born</li>
+            <li>I lived there for 2 years while my dad was in dental school</li>
+            <li>I do not remember any of it</li>
+        </ul>
+    </div>
+
+    <!-- ARIZONA -->
+    <div class="place" id="arizona">
+        <h2>2. Chandler, Arizona</h2>
+        <img src="IMG_8882.JPG">
+        <ul>
+            <li>I grew up most of my life in Arizona</li>
+            <li>I attended Pre-K through freshman year of high school there</li>
+            <li>I loved that place and never wanted to leave</li>
+        </ul>
+    </div>
+
+    <!-- UTAH -->
+    <div class="place" id="utah">
+        <h2>3. North Ogden, Utah</h2>
+        <img src="Utah.jpg">
+        <ul>
+            <li>My family and I moved here in 2020 during the Covid-19 Pandemic</li>
+            <li>I attended 3 years of high school here</li>
+            <li>It was a huge adjustment from Arizona</li>
+        </ul>
+    </div>
+
+    <!-- AUSTRALIA -->
+    <div class="place" id="australia">
+        <h2>4. Australia</h2>
+        <img src="IMG_2619.JPG">
+        <ul>
+            <li>I served my 2 year LDS mission in Australia</li>
+            <li>I lived in both Tasmania and Victoria</li>
+            <li>I had some of my greatest experiences there and dream of going back one day</li>
+        </ul>
+    </div>
+
+    <!-- PROVO -->
+    <div class="place" id="provo">
+        <h2>5. Provo, Utah</h2>
+        <img src="IMG_2517.JPG">
+        <ul>
+            <li>I have been living in Provo for the past year since returning from my mission</li>
+            <li>I met my wife and greatest friends here</li>
+            <li>I have the opportunity of being a student-athlete at BYU</li>
+        </ul>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <a href="#top" class="top-button">Back to Top</a>
+
+</body>
+</html>

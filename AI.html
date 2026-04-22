@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lucky Slot Machine</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: radial-gradient(circle at center, #111, #000);
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        transition: box-shadow 0.2s ease;
+    }
+
+    /* ✅ ADDED NAVBAR STYLE */
+    .nav {
+        background-color: #333;
+        padding: 15px;
+    }
+
+    .nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .nav a:hover {
+        text-decoration: underline;
+    }
+
+    h1 {
+        margin-top: 40px;
+        font-size: 70px;
+        color: #66ccff;
+        text-shadow: 0 0 20px #66ccff, 0 0 40px #33bbff;
+    }
+
+    .slot-machine {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin-top: 120px;
+    }
+
+    .reel {
+        width: 160px;
+        height: 160px;
+        background: linear-gradient(#333, #111);
+        border: 5px solid #66ccff;
+        border-radius: 15px;
+        font-size: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 25px #66ccff;
+    }
+
+    button {
+        margin-top: 60px;
+        padding: 18px 50px;
+        font-size: 24px;
+        background: #66ccff;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 0 20px #66ccff;
+    }
+
+    #message {
+        margin-top: 35px;
+        font-size: 34px;
+        font-weight: bold;
+    }
+
+    .confetti {
+        position: fixed;
+        width: 16px;
+        height: 16px;
+        top: -20px;
+        animation: fall 3s linear forwards;
+        border-radius: 3px;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(1080deg);
+            opacity: 0;
+        }
+    }
+
+    .flash {
+        animation: flashAnim 0.15s infinite;
+    }
+
+    @keyframes flashAnim {
+        0% { box-shadow: 0 0 0px #66ccff; }
+        50% { box-shadow: 0 0 60px #66ccff, 0 0 120px #33bbff; }
+        100% { box-shadow: 0 0 0px #66ccff; }
+    }
+
+    .shake {
+        animation: shakeAnim 0.5s;
+    }
+
+    @keyframes shakeAnim {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(8px, -8px); }
+        50% { transform: translate(-8px, 8px); }
+        75% { transform: translate(8px, 8px); }
+        100% { transform: translate(0, 0); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ✅ ADDED NAVBAR -->
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="Scratch.html">Where I Lived</a>
+    <a href="Resume.html">Resume</a>
+</div>
+
+<h1>🎰 The 67 Game 🎰</h1>
+
+<div class="slot-machine">
+    <div class="reel" id="reel1">-</div>
+    <div class="reel" id="reel2">-</div>
+</div>
+
+<button onclick="spin()">SPIN</button>
+
+<div id="message"></div>
+
+<script>
+
+// 🔥 Increased luck significantly
+const LUCK_TARGET = 0.5;
+
+function luckyNumber() {
+    const roll = Math.random();
+
+    // Heavily favor 6 and 7
+    if (roll < LUCK_TARGET / 2) return 6;
+    if (roll < LUCK_TARGET) return 7;
+
+    // Now only 1–9
+    return Math.floor(Math.random() * 9) + 1;
+}
+
+function spin() {
+    const reel1 = document.getElementById("reel1");
+    const reel2 = document.getElementById("reel2");
+    const message = document.getElementById("message");
+    const body = document.body;
+
+    message.textContent = "";
+
+    let interval = setInterval(() => {
+        reel1.textContent = Math.floor(Math.random() * 9) + 1;
+        reel2.textContent = Math.floor(Math.random() * 9) + 1;
+    }, 100);
+
+    setTimeout(() => {
+        clearInterval(interval);
+
+        const n1 = luckyNumber();
+        const n2 = luckyNumber();
+
+        reel1.textContent = n1;
+        reel2.textContent = n2;
+
+        if (n1 === 6 && n2 === 7) {
+            message.textContent = "🎉 YOU WON! 🎉";
+            launchConfetti();
+            triggerWinEffects();
+        } else {
+            message.textContent = "Try Again";
+        }
+
+    }, 1500);
+}
+
+function launchConfetti() {
+    for (let i = 0; i < 200; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+        confetti.style.animationDuration = (Math.random() * 2 + 1.5) + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4500);
+    }
+}
+
+function triggerWinEffects() {
+    const body = document.body;
+
+    body.classList.add("shake");
+    body.classList.add("flash");
+
+    setTimeout(() => {
+        body.classList.remove("shake");
+        body.classList.remove("flash");
+    }, 3000);
+}
+
+</script>
+
+</body>
+</html>
